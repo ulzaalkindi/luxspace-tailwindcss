@@ -89,6 +89,7 @@
               </li>
               <li class="ml-6">
                 <a
+                  id="header-cart"
                   href="#"
                   class="flex items-center justify-center w-8 h-8 text-black cart cart-filled"
                 >
@@ -148,8 +149,8 @@
     <section class="md:py-16">
       <div class="container mx-auto px-4">
         <div class="flex -mx-4 flex-wrap">
-          <!-- Start: Cart Details -->
-          <div class="w-full px-4 mb-4 md:w-8/12 md:mb-0">
+          <!-- Start: shopping Cart Details -->
+          <div class="w-full px-4 mb-4 md:w-8/12 md:mb-0" id="shopping-cart">
             <div
               class="flex flex-start mb-4 mt-8 pb-3 border-b border-gray-200 md:border-b-0"
             >
@@ -181,8 +182,17 @@
               </div>
             </div>
             <!-- END: Table Title -->
+
+            <p id="cart-empty" class="hidden text-center py-8">
+              Ooops.... Cart is empty
+              <a href="details.html" class="underline">Shop Now!</a>
+            </p>
+
             <!-- Start: Table Item 1 -->
-            <div class="flex flex-start flex-wrap items-center mb-4 -mx-4">
+            <div
+              class="flex flex-start flex-wrap items-center mb-4 -mx-4"
+              data-row="1"
+            >
               <div class="px-4 flex-none">
                 <div class="" style="width: 90px; height: 90px">
                   <img
@@ -215,6 +225,7 @@
               <div class="px-4 w-2/12">
                 <div class="text-center">
                   <button
+                    data-delete-item="1"
                     class="text-red-600 border-none focus:outline-none px-3 py-1"
                   >
                     X
@@ -224,7 +235,10 @@
             </div>
             <!-- End: Table Item 1 -->
             <!-- Start: Table Item 2 -->
-            <div class="flex flex-start flex-wrap items-center mb-4 -mx-4">
+            <div
+              class="flex flex-start flex-wrap items-center mb-4 -mx-4"
+              data-row="2"
+            >
               <div class="px-4 flex-none">
                 <div class="" style="width: 90px; height: 90px">
                   <img
@@ -257,6 +271,7 @@
               <div class="px-4 w-2/12">
                 <div class="text-center">
                   <button
+                    data-delete-item="2"
                     class="text-red-600 border-none focus:outline-none px-3 py-1"
                   >
                     X
@@ -266,7 +281,10 @@
             </div>
             <!-- End: Table Item 2 -->
             <!-- Start: Table Item 3 -->
-            <div class="flex flex-start flex-wrap items-center mb-4 -mx-4">
+            <div
+              class="flex flex-start flex-wrap items-center mb-4 -mx-4"
+              data-row="3"
+            >
               <div class="px-4 flex-none">
                 <div class="" style="width: 90px; height: 90px">
                   <img
@@ -299,6 +317,7 @@
               <div class="px-4 w-2/12">
                 <div class="text-center">
                   <button
+                    data-delete-item="3"
                     class="text-red-600 border-none focus:outline-none px-3 py-1"
                   >
                     X
@@ -310,16 +329,195 @@
           </div>
           <!-- End: Cart Details -->
           <!-- Start: Shipping Details -->
+          <div class="w-full md:px-4 md:w-4/12" id="shipping-detail">
+            <div class="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl">
+              <form action="success.html">
+                <div class="flex flex-start mb-6">
+                  <h3 class="text-2xl">Shipping Details</h3>
+                </div>
+                <!-- User Name -->
+                <div class="flex flex-col mb-4">
+                  <label for="complete-name" class="text-sm mb-2"
+                    >Complete Name</label
+                  >
+                  <input
+                    data-input
+                    type="text"
+                    id="complete-name"
+                    class="border border-gray-200 rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
+                    placeholder="Input your name"
+                  />
+                </div>
+                <!-- User Name -->
+                <!-- Email Address -->
+                <div class="flex flex-col mb-4">
+                  <label for="email-address" class="text-sm mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    data-input
+                    type="email"
+                    id="email-address"
+                    class="border border-gray-200 rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
+                    placeholder="Input your email"
+                  />
+                </div>
+                <!-- Email Address -->
+                <!-- Address-->
+                <div class="flex flex-col mb-4">
+                  <label for="address" class="text-sm mb-2">Address</label>
+                  <input
+                    data-input
+                    type="text"
+                    id="address"
+                    class="border border-gray-200 rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
+                    placeholder="Input your address"
+                  />
+                </div>
+                <!-- Address-->
+                <!-- Phone number -->
+                <div class="flex flex-col mb-4">
+                  <label for="phone" class="text-sm mb-2">Phone Address</label>
+                  <input
+                    data-input
+                    type="tel"
+                    id="phone"
+                    class="border border-gray-200 rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
+                    placeholder="Input your Phone"
+                  />
+                </div>
+                <!-- Phone number -->
+                <!-- Courier-->
+                <div class="flex flex-col mb-4">
+                  <label class="text-sm mb-2">Choose Courier</label>
+                  <div class="flex -mx-2 flex-wrap">
+                    <!-- Start: Courier 1 -->
+                    <div class="px-2 w-6/12 h-24 mb-4">
+                      <button
+                        data-value="fedex"
+                        data-name="courier"
+                        type="button"
+                        class="border border-gray-200 focus:outline-none focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full"
+                      >
+                        <img
+                          src="./images/content/courier/logo-fedex.png"
+                          alt="fedex"
+                          class="object-contain max-h-full"
+                        />
+                      </button>
+                    </div>
+                    <!-- End: Courier 1 -->
+                    <!-- Start: Courier 2 -->
+                    <div class="px-2 w-6/12 h-24 mb-4">
+                      <button
+                        data-value="dhl"
+                        data-name="courier"
+                        type="button"
+                        class="border border-gray-200 focus:outline-none focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full"
+                      >
+                        <img
+                          src="./images/content/courier/logo-dhl.png"
+                          alt="dhl"
+                          class="object-contain max-h-full"
+                        />
+                      </button>
+                    </div>
+                    <!-- End: Courier 2 -->
+                  </div>
+                </div>
+                <!-- Courier -->
+                <!-- payment-->
+                <div class="flex flex-col mb-4">
+                  <label class="text-sm mb-2">Choose payment</label>
+                  <div class="flex -mx-2 flex-wrap">
+                    <!-- Start: payment 1 -->
+                    <div class="px-2 w-6/12 h-24 mb-4">
+                      <button
+                        data-value="midtrans"
+                        data-name="payment"
+                        type="button"
+                        class="border border-gray-200 focus:outline-none focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full"
+                      >
+                        <img
+                          src="./images/content/payment/logo-midtrans.png"
+                          alt="midtrans"
+                          class="object-contain max-h-full"
+                        />
+                      </button>
+                    </div>
+                    <!-- End: payment 1 -->
+                    <!-- Start: payment 2 -->
+                    <div class="px-2 w-6/12 h-24 mb-4">
+                      <button
+                        data-value="mastercard"
+                        data-name="payment"
+                        type="button"
+                        class="border border-gray-200 focus:outline-none focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full"
+                      >
+                        <img
+                          src="./images/content/payment/logo-mastercard.png"
+                          alt="mastercard"
+                          class="object-contain max-h-full"
+                        />
+                      </button>
+                    </div>
+                    <!-- End: payment 2 -->
+                    <!-- Start: payment 3 -->
+                    <div class="px-2 w-6/12 h-24 mb-4">
+                      <button
+                        data-value="bitcoin"
+                        data-name="payment"
+                        type="button"
+                        class="border border-gray-200 focus:outline-none focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full"
+                      >
+                        <img
+                          src="./images/content/payment/logo-bitcoin.png"
+                          alt="bitcoin"
+                          class="object-contain max-h-full"
+                        />
+                      </button>
+                    </div>
+                    <!-- End: payment 3 -->
+                    <!-- Start: payment 2 -->
+                    <div class="px-2 w-6/12 h-24 mb-4">
+                      <button
+                        data-value="americanexpress"
+                        data-name="payment"
+                        type="button"
+                        class="border border-gray-200 focus:outline-none focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full"
+                      >
+                        <img
+                          src="./images/content/payment/logo-americanexpress.png"
+                          alt="americanexpress"
+                          class="object-contain max-h-full"
+                        />
+                      </button>
+                    </div>
+                    <!-- End: payment 2 -->
+                  </div>
+                </div>
+                <!-- payment -->
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    disabled
+                    class="bg-pink-400 text-black focus:bg-black focus:outline-none w-full py-3 rounded-full text-lg focus:text-pink-400 transition-all duration-200 px-6"
+                  >
+                    Checkout Now
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
           <!-- End: Shipping Details -->
         </div>
       </div>
     </section>
-
     <!-- End : Cart -->
 
     <!-- START: Aside Menu / Footer -->
     <section class="">
-      <div class="border-b border-gray-200 py-12 px-4">
+      <div class="border-b border-t border-gray-200 py-12 px-4">
         <div class="flex justify-center mb-8">
           <img
             src="./images/design/logo.svg"
